@@ -11,6 +11,7 @@ class OwnerAccount(models.Model):
     '''
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=50)
+    email = models.EmailField()
 
     def __unicode__(self):
         return self.first_name

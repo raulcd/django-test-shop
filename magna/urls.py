@@ -5,6 +5,7 @@ from django.conf.urls.defaults import patterns, include, url
 # admin.autodiscover()
 
 urlpatterns = patterns('',
+    url(r'^shop/$', 'shop.views.create_shop'),
     # Examples:
     # url(r'^$', 'magna.views.home', name='home'),
     # url(r'^magna/', include('magna.foo.urls')),
