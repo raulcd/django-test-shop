@@ -12,4 +12,4 @@ class OwnerTestCase(unittest.TestCase):
     def test_01_unicode_returns_proper_stuff(self):
         self.create_fixtures()
         ret = self.owneraccount.__unicode__()
-        self.assertEqual(ret, self.owneraccount.first_name())
+        self.assertEqual(ret, self.owneraccount.first_name)
