@@ -9,7 +9,7 @@ def create_shop(request):
         form = CreateOwnerForm(request.POST)
         if form.is_valid():
             # We need to do something with the data
-            return HttpResponseRedirect('shop/thanks.html')
+            return HttpResponseRedirect('static/thanks.html')
     else:
         # The methos is not POST and is not correct
         form = CreateOwnerForm()
