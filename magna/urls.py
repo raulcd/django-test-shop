@@ -6,6 +6,7 @@ from django.conf.urls.defaults import patterns, include, url
 
 urlpatterns = patterns('',
     url(r'^shop/$', 'shop.views.create_shop'),
+    url(r'^shop/thanks/$', 'shop.views.thanks'),
     # Examples:
     # url(r'^$', 'magna.views.home', name='home'),
     # url(r'^magna/', include('magna.foo.urls')),
