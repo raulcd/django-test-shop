@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from shop.models.owner_account_model import OwnerAccount
 from django.utils import unittest
+from django.core.exceptions import ValidationError
 
 class OwnerTestCase(unittest.TestCase):
     def create_fixtures(self):
@@ -20,4 +21,5 @@ class OwnerTestCase(unittest.TestCase):
         self.owneraccount_2.first_name = "Raúl"
         self.owneraccount_2.last_name = "Cumplido Domínguez"
         self.owneraccount_2.email = "raulcd"
-        self.owneraccount_2.save()
+        with self.assertRaises(ValidationError):
+            self.owneraccount_2.full_clean()
