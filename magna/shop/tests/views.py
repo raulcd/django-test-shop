@@ -39,7 +39,7 @@ class CreateShopTestCase(TestCase):
         self.assertContains(response, 'This field is required', count=0)
         self.assertContains(response, 'The shop name can only contain characters from a to z in lowercase', count=1)
 
-    def test_04_get_thanks_template(self):
+    def test_05_get_thanks_template(self):
         response = self.client.get('/shop/thanks/')
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'shop/thanks.html')
