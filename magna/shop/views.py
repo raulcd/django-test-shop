@@ -10,6 +10,7 @@ def create_shop(request):
     # View if the method is POST and the form is valid has data attached
     if request.method == 'POST':
         form = CreateOwnerForm(request.POST)
+        # The validation already controls if the store and email are unique
         if form.is_valid():
             owner = OwnerAccount()
             owner.first_name = form.cleaned_data['first_name']
@@ -20,12 +21,12 @@ def create_shop(request):
             shop.owner = owner
             shop.name = form.cleaned_data['store_name']
             shop.save()
-            # We need to do something with the data
+            # Once data is created redirection to the thanks view
             return HttpResponseRedirect(reverse('shop.views.thanks'))
     else:
-        # The methos is not POST and is not correct
+        # The method is not POST 
         form = CreateOwnerForm()
-    # The method is not correct or the Form is not valid. We show the form
+    # The method is GET or the Form is not valid. We show the form
     return render_to_response('shop/create_shop.html', { 'form' : form })
 
 def thanks(request):
