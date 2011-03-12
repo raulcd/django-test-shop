@@ -43,3 +43,31 @@ class CreateShopTestCase(TestCase):
         response = self.client.get('/shop/thanks/')
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'shop/thanks.html')
+
+    def test_06_submit_form_with_already_existing_email(self):
+        response = self.client.post('/shop/', {'store_name' : 'mystore',
+                                               'first_name' : 'My name',
+                                               'last_name' : 'My Last Name',
+                                               'email' : 'mymail@mymail.com' })
+        self.assertContains(response, 'This field is required', count = 0, status_code = 302)
+        response = self.client.post('/shop/', {'store_name' : 'newstore',
+                                               'first_name' : 'My name',
+                                               'last_name' : 'My Last Name',
+                                               'email' : 'mymail@mymail.com'})
+        self.assertContains(response, 'Owner account with this Email already exists', count=1, status_code=200)
+        self.assertContains(response, 'This field is required', count=0, status_code=200)
+
+    def test_07_submit_form_with_already_existing_storename(self):
+        response = self.client.post('/shop/', {'store_name' : 'mystore',
+                                               'first_name' : 'My name',
+                                               'last_name' : 'My Last Name',
+                                               'email' : 'mymail@mymail.com'})
+        self.assertEquals(response.status_code, 302)
+        response = self.client.post('/shop/', {'store_name' : 'mystore',
+                                               'first_name' : 'My name',
+                                               'last_name' : 'My Last Name',
+                                               'email' : 'myothermail@mymail.com'})
+        self.assertContains(response, 'Owner account with this Email already exists', count=0, status_code=200)
+        self.assertContains(response, 'The shop name already exists', count = 1, status_code =200)
+
+
