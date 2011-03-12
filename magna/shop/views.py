@@ -5,6 +5,7 @@ from shop.models.owner_account_model import OwnerAccount
 from shop.models.shop_model import Shop
 from django.core.urlresolvers import reverse
 
+
 def create_shop(request):
     # View if the method is POST and the form is valid has data attached
     if request.method == 'POST':
