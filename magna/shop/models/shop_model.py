@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
+from django.contrib.auth.models import User
 from django.db import models
-from shop.models.owner_account_model import OwnerAccount
 
 
 class Shop(models.Model):
     name = models.CharField(max_length=100, unique=True)
-    owner = models.ForeignKey(OwnerAccount)
+    owner = models.ForeignKey(User)
 
     class Meta:
         app_label = 'shop'

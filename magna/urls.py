@@ -7,6 +7,15 @@ from django.conf.urls.defaults import patterns, include, url
 urlpatterns = patterns('',
     url(r'^shop/$', 'shop.views.create_shop'),
     url(r'^shop/thanks/$', 'shop.views.thanks'),
+    url(r'^register/$', 'shop.registration.views.register',
+        {'template_name': 'registration/registration_form.html'},
+        name='registration_register'),
+    url(r'^activate/(?P<activation_key>\w+)/$',
+                           'shop.registration.views.activate',
+                           name='registration_activate'),
+    url(r'^register/complete/$', 'shop.registration.views.register_complete', name = 'registration_complete')
+    #(r'^accounts/', include('registration.urls')),
+
     # Examples:
     # url(r'^$', 'magna.views.home', name='home'),
     # url(r'^magna/', include('magna.foo.urls')),
