@@ -1,19 +1,18 @@
 # -*- coding: utf-8 -*-
+from django.contrib.auth.models import User
 from shop.models.shop_model import Shop
-from shop.models.owner_account_model import OwnerAccount
 from django.utils import unittest
 from django.core.exceptions import ValidationError
 
 
 class ShopTestCase(unittest.TestCase):
     def create_fixtures(self):
-        self.owneraccount = OwnerAccount()
-        self.owneraccount.first_name = "FirstName"
-        self.owneraccount.last_name = "LastName"
-        self.owneraccount.email = "myemail@myemail.com"
-        self.owneraccount.save()
+        self.user = User()
+        self.user.username =  "myemail@myemail.com"
+        self.user.password = 'my_pass'
+        self.user.save()
         self.shop = Shop()
-        self.shop.owner = self.owneraccount
+        self.shop.owner = self.user
         self.shop.name = 'myshopname'
         self.shop.save()
 

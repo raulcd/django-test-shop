@@ -5,7 +5,6 @@ from django.conf.urls.defaults import patterns, include, url
 # admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^shop/$', 'shop.views.create_shop'),
     url(r'^shop/thanks/$', 'shop.views.thanks'),
     url(r'^register/$', 'shop.registration.views.register',
         {'template_name': 'registration/registration_form.html'},
