@@ -4,6 +4,7 @@ from django.contrib.auth import views as auth_views
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
+from shop.registration.forms import MyAuthenticationForm
 
 urlpatterns = patterns('',
     url(r'^shop/thanks/$', 'shop.views.thanks'),
@@ -17,7 +18,8 @@ urlpatterns = patterns('',
     url(r'^admin/$', 'shop.views.logged', name='admin_login'),
     url(r'^accounts/login/$',
                            auth_views.login,
-                           {'template_name': 'registration/login.html'},
+                           {'template_name': 'registration/login.html',
+                            'authentication_form' : MyAuthenticationForm},
                            name='auth_login'),
     #(r'^accounts/', include('registration.urls')),
 
