@@ -100,7 +100,7 @@ MIDDLEWARE_CLASSES = (
     #'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     #'django.middleware.csrf.CsrfViewMiddleware',
-    #'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
     #'django.contrib.messages.middleware.MessageMiddleware',
 )
 
@@ -134,6 +134,8 @@ EMAIL_HOST_USER = 'raulcumplido'
 EMAIL_HOST_PASSWORD = '01018303'
 DEFAULT_FROM_EMAIL = 'webmaster@localhost'
 EMAIL_USE_TLS = True
+
+LOGIN_REDIRECT_URL='/admin/'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

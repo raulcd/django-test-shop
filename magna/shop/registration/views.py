@@ -1,6 +1,7 @@
 from django.conf import settings
+from django.contrib.auth import authenticate, login
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
 from registration.models import RegistrationProfile
@@ -17,6 +18,10 @@ def register(request, template_name = 'registration/registration_form.html'):
             # a default value using reverse() will cause circular-import
             # problems with the default URLConf for this application, which
             # imports this file.
+            user = authenticate(username=form.cleaned_data['email'], password=form.cleaned_data['password1'])
+            if user is not None:
+                login(request, user)
+                print "the user is logged!!!"
             return HttpResponseRedirect(reverse('registration_complete'))
     else:
         form = RegistrationShopForm()
@@ -32,8 +37,7 @@ def activate(request, activation_key):
     return render_to_response('shop/thanks.html',
                               { 'account': account,
                                 'expiration_days': settings.ACCOUNT_ACTIVATION_DAYS})
-    #TODO Activation account when new account is setted
 
 def register_complete(request):
-    return render_to_response('shop/thanks.html')
+   return render_to_response('shop/thanks.html')
   

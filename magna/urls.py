@@ -1,4 +1,5 @@
 from django.conf.urls.defaults import patterns, include, url
+from django.contrib.auth import views as auth_views
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -12,7 +13,12 @@ urlpatterns = patterns('',
     url(r'^activate/(?P<activation_key>\w+)/$',
                            'shop.registration.views.activate',
                            name='registration_activate'),
-    url(r'^register/complete/$', 'shop.registration.views.register_complete', name = 'registration_complete')
+    url(r'^register/complete/$', 'shop.registration.views.register_complete', name = 'registration_complete'),
+    url(r'^admin/$', 'shop.views.logged', name='admin_login'),
+    url(r'^accounts/login/$',
+                           auth_views.login,
+                           {'template_name': 'registration/login.html'},
+                           name='auth_login'),
     #(r'^accounts/', include('registration.urls')),
 
     # Examples:
