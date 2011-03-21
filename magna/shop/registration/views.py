@@ -1,7 +1,9 @@
+from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
+from registration.models import RegistrationProfile
 from shop.registration.forms import RegistrationShopForm
 
 __author__ = 'raulcd'
@@ -24,9 +26,13 @@ def register(request, template_name = 'registration/registration_form.html'):
                               {'form': form},
                               context_instance=context)
 
-def activate(request):
+def activate(request, activation_key):
+    activation_key = activation_key.lower() # Normalize before trying anything with it.
+    account = RegistrationProfile.objects.activate_user(activation_key)
+    return render_to_response('shop/thanks.html',
+                              { 'account': account,
+                                'expiration_days': settings.ACCOUNT_ACTIVATION_DAYS})
     #TODO Activation account when new account is setted
-    pass
 
 def register_complete(request):
     return render_to_response('shop/thanks.html')
