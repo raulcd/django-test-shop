@@ -21,6 +21,7 @@ urlpatterns = patterns('',
                            {'template_name': 'registration/login.html',
                             'authentication_form' : MyAuthenticationForm},
                            name='auth_login'),
+    url(r'^payment/', include('payments.urls')),
     #(r'^accounts/', include('registration.urls')),
 
     # Examples:

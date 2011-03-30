@@ -1,0 +1,1 @@
+[{ "pk": 1, "model": "payments.PaymentTypes", "fields": { "name": "PAYMENT_ON_DELIVERY" } } ]
