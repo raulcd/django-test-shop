@@ -39,5 +39,6 @@ def activate(request, activation_key):
                                 'expiration_days': settings.ACCOUNT_ACTIVATION_DAYS})
 
 def register_complete(request):
-   return render_to_response('shop/thanks.html')
+    request.session.set_expiry(0)
+    return render_to_response('shop/thanks.html')
   

@@ -22,6 +22,8 @@ urlpatterns = patterns('',
                             'authentication_form' : MyAuthenticationForm},
                            name='auth_login'),
     url(r'^payment/', include('payments.urls')),
+    url(r'^products/view/', 'shop.views.show_configured_products', name = 'show_products'),
+    url(r'^products/add/', 'shop.views.add_products', name = 'add_products'),
     #(r'^accounts/', include('registration.urls')),
 
     # Examples:
