@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Configure your store</title>
+</head>
+<body>
+    <div id="header" class="true">
+        <div class="adminbox">
+                <ul class="usernav">
+                <li>
+                    <a href={% url add_products %}>Products</a>
+                </li>
+                <li>
+                    <a href={% url admin_login %}>Payments</a>
+                </li>
+                <li>
+                    <a href="/logout/">Log Out</a>
+                </li>
+                </ul>
+        </div>
+    </div>
+{% block content %}
+{% endblock %}
+</body>
+</html>
