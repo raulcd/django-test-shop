@@ -136,7 +136,7 @@ EMAIL_HOST_PASSWORD = '01018303'
 DEFAULT_FROM_EMAIL = 'webmaster@localhost'
 EMAIL_USE_TLS = True
 
-LOGIN_REDIRECT_URL='/admin/'
+LOGIN_REDIRECT_URL='/shop/thanks/'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

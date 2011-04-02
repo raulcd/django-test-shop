@@ -15,6 +15,7 @@ def thanks(request):
 
 @login_required()
 def logged(request):
+    #TODO: not used now. Use the code to retrieve the activation date for the user
     if not request.user.is_active:
         last_activation_date = request.user.date_joined + timedelta(settings.ACCOUNT_ACTIVATION_DAYS)
         return HttpResponse("This is a logged page. You have until %s/%s/%s to activate your account. Your store is %s" %
@@ -43,3 +44,6 @@ def show_configured_products(request):
     request.session.set_expiry(0)
     products = Product.objects.filter(shop__owner__id=request.user.id)
     return render_to_response('shop/products.html', {'products' : products})
+
+def index(request):
+    return render_to_response('index.html', {})

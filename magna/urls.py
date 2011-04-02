@@ -7,7 +7,8 @@ from django.contrib.auth import views as auth_views
 from shop.registration.forms import MyAuthenticationForm
 
 urlpatterns = patterns('',
-    url(r'^shop/thanks/$', 'shop.views.thanks'),
+    url(r'^$', 'shop.views.index'),
+    url(r'^shop/thanks/$', 'shop.views.thanks', name='thanks_view'),
     url(r'^register/$', 'shop.registration.views.register',
         {'template_name': 'registration/registration_form.html'},
         name='registration_register'),
@@ -25,6 +26,7 @@ urlpatterns = patterns('',
     url(r'^payment/', include('payments.urls')),
     url(r'^products/view/', 'shop.views.show_configured_products', name = 'show_products'),
     url(r'^products/add/', 'shop.views.add_products', name = 'add_products'),
+    #url(r'^shop/(?P<shop_name>\w+)/$', 'shop.views.view_shop'),
     #(r'^accounts/', include('registration.urls')),
 
     # Examples:
